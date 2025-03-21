@@ -17,7 +17,7 @@
         android:paddingLeft="10dp">
 
         <EditText
-            android:id="@+id/editNameId"
+            android:id="@+id/tcpAddressId"
             android:layout_width="280dp"
             android:layout_height="68dp"
             android:background="@drawable/edit_text_border"

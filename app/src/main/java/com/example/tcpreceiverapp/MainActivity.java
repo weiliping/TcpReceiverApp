@@ -14,7 +14,8 @@ import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int cap = 8192;
+    public static final int cap = 8192;
+    public static final String HEX_S = "%02x";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public void oKOnClick(View view) {
         ZContext context = new ZContext();
         ZMQ.Socket socket = context.createSocket(SocketType.REP);
-        EditText tcp = findViewById(R.id.editNameId);
+        EditText tcp = findViewById(R.id.tcpAddressId);
         socket.bind(tcp.getText().toString());
         StringBuilder result = null;
         while (!Thread.currentThread().isInterrupted()) {
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             socket.recv(reply, 0, cap, 0);
             result = new StringBuilder();
             for (byte aByte : reply) {
-                result.append(String.format("%02x", aByte));
+                result.append(String.format(HEX_S, aByte));
             }
         }
 
