@@ -15,6 +15,7 @@ import org.zeromq.ZMQ;
 
 public class MainActivity extends AppCompatActivity {
     private static final int cap = 8192;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.textShowId);
         textView.setMovementMethod(new ScrollingMovementMethod());
     }
+
     public void oKOnClick(View view) {
         ZContext context = new ZContext();
         ZMQ.Socket socket = context.createSocket(SocketType.REP);
